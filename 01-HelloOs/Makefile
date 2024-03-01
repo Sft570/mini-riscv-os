@@ -1,4 +1,4 @@
-CC = riscv64-unknown-elf-gcc
+CC = /home/saulftobias/TFM/freedom-precompiled/riscv64-unknown-elf-gcc-10.1.0-2020.08.2-x86_64-linux-ubuntu14/bin/riscv64-unknown-elf-gcc
 CFLAGS = -nostdlib -fno-builtin -mcmodel=medany -march=rv32ima -mabi=ilp32
 
 QEMU = qemu-system-riscv32
