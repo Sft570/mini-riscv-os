@@ -2,14 +2,14 @@ CC = /home/saulftobias/TFM/freedom-precompiled/riscv64-unknown-elf-gcc-10.1.0-20
 CFLAGS = -nostdlib -fno-builtin -mcmodel=medany -march=rv32ima -mabi=ilp32
 
 QEMU = qemu-system-riscv32
-QFLAGS = -nographic -smp 4 -machine virt -bios none
+QFLAGS = -nographic -smp 4 -s -S -machine virt -bios none
 
 OBJDUMP = riscv64-unknown-elf-objdump
 
 all: os.elf
 
-os.elf: start.s os.c
-	$(CC) $(CFLAGS) -T os.ld -o os.elf $^
+os.elf: start.s os.c suma_asm.S
+	$(CC) $(CFLAGS) -g -T os.ld -o os.elf $^
 
 qemu: $(TARGET)
 	@qemu-system-riscv32 -M ? | grep virt >/dev/null || exit
